@@ -1,5 +1,22 @@
+$: << File.dirname(__FILE__)
+
+require 'beats/wavefile'
+
+require 'beats/audio_engine'
+require 'beats/audio_utils'
+require 'beats/beats_wavefile'
+require 'beats/kit'
+require 'beats/pattern_expander'
+require 'beats/pattern'
+require 'beats/song_optimizer'
+require 'beats/song_parser'
+require 'beats/song'
+require 'beats/track'
+
+require 'beats/version'
+
+
 class Beats
-  BEATS_VERSION = "1.3.0a"
   
   # Each pattern in the song will be split up into sub patterns that have at most this many steps.
   # In general, audio for several shorter patterns can be generated more quickly than for one long

@@ -1,6 +1,4 @@
-$:.unshift File.join(File.dirname(__FILE__),'..','lib')
-
-require 'test/includes'
+require 'helper'
 
 # Make private methods public for testing
 class MockAudioEngine < AudioEngine

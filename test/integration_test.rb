@@ -1,6 +1,4 @@
-$:.unshift File.join(File.dirname(__FILE__),'..','lib')
-
-require 'test/includes'
+require 'helper'
 
 class SongParserTest < Test::Unit::TestCase
   TRACK_NAMES =  ["bass", "snare", "hh_closed", "hh_closed2", "agogo", "tom4", "tom2"]
@@ -88,7 +86,9 @@ class SongParserTest < Test::Unit::TestCase
     end
   end
   
-  def clean_output_folder()
+  def clean_output_folder
+    Dir.mkdir(OUTPUT_FOLDER) unless File.exist?(OUTPUT_FOLDER)
+    
     dir = Dir.new(OUTPUT_FOLDER)
     file_names = dir.entries
     file_names.each do |file_name|

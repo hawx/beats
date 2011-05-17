@@ -5,17 +5,7 @@ start_time = Time.now
 $:.unshift File.dirname(__FILE__) + "/.."
 require "optparse"
 require "yaml"
-require "lib/wavefile"
-require "lib/beatswavefile"
-require "lib/audioengine"
-require "lib/audioutils"
 require "lib/beats"
-require "lib/kit"
-require "lib/pattern"
-require "lib/song"
-require "lib/songoptimizer"
-require "lib/songparser"
-require "lib/track"
 
 def parse_options
   options = {:split => false, :pattern => nil}
@@ -30,7 +20,7 @@ def parse_options
     end
   
     opts.on('-v', '--version', "Display version number and exit") do
-      puts "BEATS v#{Beats::BEATS_VERSION}"
+      puts "BEATS v#{Beats::VERSION}"
       exit
     end
   

@@ -1,6 +1,4 @@
-$:.unshift File.join(File.dirname(__FILE__),'..','lib')
-
-require 'test/includes'
+require 'helper'
 
 class AudioUtilsTest < Test::Unit::TestCase
   def test_composite

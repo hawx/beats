@@ -1,6 +1,4 @@
-$:.unshift File.join(File.dirname(__FILE__),'..','lib')
-
-require 'test/includes'
+require 'helper'
 
 # Kit which allows directly changing the sound bank after initialization, to allows tests
 # to use fixture data directly in the test instead of loading it from the file system.
