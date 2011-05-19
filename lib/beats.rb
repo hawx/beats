@@ -13,6 +13,7 @@ require 'beats/song_optimizer'
 require 'beats/song_parser'
 require 'beats/song'
 require 'beats/track'
+require 'beats/probabilistic_track'
 
 require 'beats/version'
 
@@ -35,15 +36,15 @@ class Beats
       ARGV[0] = '-h'
       parse_options()
     end
-
+    
     if @output_file_name == nil
       @output_file_name = File.basename(@input_file_name, File.extname(@input_file_name)) + ".wav"
     end
-
+    
     song_parser = SongParser.new()
     song, kit = song_parser.parse(File.dirname(@input_file_name), File.read(@input_file_name))
     song_optimizer = SongOptimizer.new()
-
+    
     # If the -p option is used, transform the song into one whose flow consists of
     # playing that single pattern once.
     unless @options[:pattern] == nil
@@ -56,7 +57,7 @@ class Beats
       song.flow = [pattern_name]
       song.remove_unused_patterns()
     end
-
+    
     duration = nil
     if @options[:split]
       split_songs = song.split()

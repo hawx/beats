@@ -49,4 +49,9 @@ class TrackTest < Test::Unit::TestCase
     assert_equal(4,  test_tracks[:placeholder].step_count())
     assert_equal(32, test_tracks[:complicated].step_count())
   end
+  
+  def test_valid
+    assert_equal true, Track.valid?('..X...X...X...X..X.|..X.X')
+    assert_equal false, Track.valid?('1')
+  end
 end

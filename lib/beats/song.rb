@@ -10,6 +10,8 @@ class InvalidTempoError < RuntimeError; end
 # the AudioEngine can produce the audio data that is saved to disk.
 class Song
   DEFAULT_TEMPO = 120
+  
+  attr_accessor :patterns
 
   def initialize()
     self.tempo = DEFAULT_TEMPO

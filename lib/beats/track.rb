@@ -1,6 +1,5 @@
 class InvalidRhythmError < RuntimeError; end
 
-
 # Domain object which models a kit sound playing a rhythm. For example,
 # a bass drum playing every quarter note for two measures.
 #
@@ -13,8 +12,16 @@ class Track
   
   def initialize(name, rhythm)
     # TODO: Add validation for input parameters
-    @name = name
+    @name = name    
     self.rhythm = rhythm
+  end
+  
+  def self.valid?(rhythm)
+    if rhythm =~ /^[.X|]+$/
+      true
+    else
+      false
+    end
   end
   
   # TODO: What to have this invoked when setting like this?
@@ -43,7 +50,15 @@ class Track
     if beats == []
       beats = [0]
     end
+
     @beats = beats
+  end
+  
+  # Pad @rhtyhm to +n+ notes
+  def pad_to(n)
+    if n > @rhythm.size
+      @rhythm << REST * (n - @rhythm.size)
+    end
   end
   
   def step_count

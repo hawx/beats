@@ -14,17 +14,22 @@ class Pattern
   # Adds a new track to the pattern.
   def track(name, rhythm)
     track_key = unique_track_name(name)
-    new_track = Track.new(name, rhythm)        
+    new_track = nil
+    if Track.valid?(rhythm)
+      new_track = Track.new(name, rhythm)
+    elsif ProbabilisticTrack.valid?(rhythm)
+      new_track = ProbabilisticTrack.new(name, rhythm)
+    else
+      raise InvalidRhythmError, "Track #{name} has an invalid rhythm: #{rhythm}"
+    end
     @tracks[track_key] = new_track
-
+    
     # If the new track is longer than any of the previously added tracks,
     # pad the other tracks with trailing . to make them all the same length.
     # Necessary to prevent incorrect overflow calculations for tracks.
     longest_track_length = step_count()
     @tracks.values.each do |track|
-      if track.rhythm.length < longest_track_length
-        track.rhythm += "." * (longest_track_length - track.rhythm.length)
-      end
+      track.pad_to(longest_track_length)
     end
     
     return new_track
