@@ -32,6 +32,49 @@ BEATS is a command-line drum machine written in pure Ruby. Feed it a song notate
 And [here's what it sounds like](http://beatsdrummachine.com/beat.mp3) after getting the BEATS treatment. What a glorious groove!
 
 
+
+Changes I've Made From the Main Repo
+------------------------------------
+
+Added probability-ness, so you can define the probability of a drum playing as opposed to
+just saying when it will or won't. This is done by a different syntax (though the old can
+be mixed with this in the same file):
+
+    Song:
+      Tempo: 120
+      Flow:
+        - Verse:    x2
+        - Chorus:   x4
+        - Verse:    x2
+        - Chorus:   x4
+      Kit:
+        - bass:       sounds/bass.wav
+        - snare:      sounds/snare.wav
+        - hh_closed:  sounds/hh_closed.wav
+        - agogo:      sounds/agogo_high.wav
+    
+    Verse:
+      - bass:             .5  0  0  0 .5  0  0  0 .5  0  0  0 .5  0  0  0
+      - snare:             0  0  0  0  0  0  0  0  0  0  0  0  0  0 .9  0
+      - hh_closed:         1  0 .3 .2  1  0  0  1  1 .5 .5 .5 .5 .5 .5 .5
+      - agogo:            .1  0 .1 .1 .1 .1  0 .1  0  0  0  0  0  0 .5 .8
+    
+    Chorus:
+      - bass:             .6 .3 .1  0 .9 .3 .4  0 .8 .8  0 .1  1 .2 .2 .3
+      - snare:             0  0 .5 .8 .3  0  0 .1 .2 .1 .7  0  1  0  0  0
+      - hh_closed:         1 .2 .9 .9 .9 .2  1 .6  1  0 .7 .8 .2 .2  1 .3
+      - sounds/tom4.wav:   0  0  0  0  0 .5  0  0  0  0 .5 .9  0  0  0  0
+      - sounds/tom2.wav:   0  0  0  0  0  0  0 .4  0 .4  0  0  0  0  1  0
+
+### Limitations
+
+The patterns aren't worked out each time yet, so if you repeat a "random" pattern
+4 times as above it will be the same "random" pattern. There is no way around this 
+yet until I change the structure of beats a little to make it work.
+
+
+
+
 Current Status
 --------------
 
