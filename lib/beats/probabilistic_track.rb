@@ -62,8 +62,6 @@ class ProbabilisticTrack < Track
     end
     @rhythm.chop!
     
-    p @rhythm if @name == 'sounds/tom3.wav'
-    
     if beats == []
       beats = [0]
     end    
