@@ -31,10 +31,10 @@ class ProbabilisticTrack < Track
       prob = Float(ch) rescue raise("Invalid character '#{ch}' in track #{@name}")
       
       test = case ch
-        when /1(\.0)?/ then true  # always play
-        when /0(\.0)?/ then false # never play
+        when /^1(\.0?)?/ then true  # always play
+        when /^0(\.0?)?/ then false # never play
       else
-        prob >= rand # play if probability is gte to random number
+        prob >= rand  # play if probability is gte to random number
       end
         
       if test == true
@@ -62,10 +62,12 @@ class ProbabilisticTrack < Track
     end
     @rhythm.chop!
     
+    p @rhythm if @name == 'sounds/tom3.wav'
+    
     if beats == []
       beats = [0]
     end    
-
+  
     @beats = beats
   end
 
