@@ -1,6 +1,7 @@
 $: << File.dirname(__FILE__)
 
-require 'beats/wavefile'
+require 'yaml'
+require 'wavefile'
 
 require 'beats/audio_engine'
 require 'beats/audio_utils'
